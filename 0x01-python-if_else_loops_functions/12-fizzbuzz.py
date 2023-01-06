@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 # Author- Gugulethu Mdluli
 """print the numbers from 1 to 1000 separated by a space
    for multiples of three, print fizz instead of the number
