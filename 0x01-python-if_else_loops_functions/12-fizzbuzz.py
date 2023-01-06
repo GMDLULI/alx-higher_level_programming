@@ -4,6 +4,8 @@
    for multiples of three, print fizz instead of the number
    for multiples of five, print BUzz instead of the number.
    for multiples of both three and five print FizzBuzz instead of the number
+
+
    """
 def fizzbuzz():
     for number in range(1, 101):
