@@ -15,7 +15,7 @@ def add(a, b):
 def sub(a, b):
     """My additon funtion
 
-    Args: 
+    Args:
         a: first interger
         b: second interger
 
@@ -28,10 +28,10 @@ def sub(a, b):
 def mul(a, b):
     """My additon funtion
 
-    Args: 
+    Args:
         a: first interger
         b: second interger
-	
+
     Returns:
         the return value. a * b
     """
@@ -41,7 +41,7 @@ def mul(a, b):
 def div(a, b):
     """My additon funtion
 
-    Args: 
+    Args:
         a: first interger
         b: second interger
 

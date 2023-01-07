@@ -4,9 +4,9 @@ def add(a, b):
 
     Args:
         a: first integr
-       	b: second integer
+        b: second integer
 
     Returns:
-	    the return value. a + b
-	"""
+        the return value. a + b
+    """
     return (a + b)
