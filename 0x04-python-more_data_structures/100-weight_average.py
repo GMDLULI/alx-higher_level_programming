@@ -6,5 +6,5 @@ def weight_average(my_list=[]):
         for tup in my_list:
             num += (tup[0] * tup[1])
             denom += (tup[1])
-        return (num/denom)	
+        return (num/denom)
     return 0
