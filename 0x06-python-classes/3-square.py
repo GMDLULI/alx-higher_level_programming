@@ -2,8 +2,9 @@
 """class `Square` that defines a square by:
     (based on 2-square.py)
 
-	
-	"""
+"""
+
+
 class Square:
     """defines a square
     * Private instace attribute: 'size'
