@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-This module compose of a function that defines a rectangle
+Class that defines a rectangle
 """
 
 
@@ -41,7 +41,7 @@ class Rectangle:
             raise ValueError('width must be >= 0')
         self.__width = value
 
-    @property        
+    @property
     def height(self):
         return self.__height
 

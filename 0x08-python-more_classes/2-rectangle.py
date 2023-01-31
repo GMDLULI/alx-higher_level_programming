@@ -14,7 +14,7 @@ class Rectangle:
         ValueError: if height or width is < 0
     Return:
         area of rectangle
-        parimeter of rectangle 
+        parimeter of rectangle
     """
     def __init__(self, width=0, height=0):
         self.__width = width
@@ -42,7 +42,7 @@ class Rectangle:
             raise ValueError('width must be >= 0')
         self.__width = value
 
-    @property        
+    @property
     def height(self):
         return self.__height
 
@@ -58,6 +58,6 @@ class Rectangle:
         return self.__height * self.__width
 
     def perimeter(self):
-        return ((self.__height *2) + (self.__width *2))
+        return ((self.__height * 2) + (self.__width * 2))
         if height == 0 or width == 0:
             return 0

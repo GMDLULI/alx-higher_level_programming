@@ -45,7 +45,7 @@ class Rectangle:
             raise ValueError('width must be >= 0')
         self.__width = value
 
-    @property        
+    @property
     def height(self):
         return self.__height
 
@@ -63,13 +63,13 @@ class Rectangle:
 
     def perimeter(self):
         """Returns th perimeter of the rectangle"""
-        return ((self.__height *2) + (self.__width *2))
+        return ((self.__height * 2) + (self.__width * 2))
         if self.__height == 0 or self.__width == 0:
             return 0
 
-    def __str__(self)-> str:
+    def __str__(self) -> str:
         """Presents a diagram of the rectangle defined fron object"""
-        if self.__height == 0 or self.__width ==0:
+        if self.__height == 0 or self.__width == 0:
             return ("")
 
         rectangle = ""
@@ -85,7 +85,7 @@ class Rectangle:
         return (rectangle)
 
     def __repr__(self):
-        """Presents the representation of rectangle that can be recreated by eval"""
+        """Presents the representation of rectangle"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
 
     def __del__(self):
@@ -95,7 +95,7 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """ Returns the biggest rectangle between two rectangles base on area"""
+        """ Returns the biggest rectangle base on area"""
         if not isinstance(rect_1, Rectangle):
             raise TypeError('rect_1 must be an instance of Rectangle')
         if not isinstance(rect_2, Rectangle):
@@ -110,4 +110,3 @@ class Rectangle:
     def square(cls, size=0):
         """Returns a square"""
         return Rectangle(size, size)
-

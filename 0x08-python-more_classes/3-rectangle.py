@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """
-This module compose of a function that defines a rectangle
+class that defines a rectangle
 """
 
 
@@ -41,7 +41,7 @@ class Rectangle:
             raise ValueError('width must be >= 0')
         self.__width = value
 
-    @property        
+    @property
     def height(self):
         return self.__height
 
@@ -59,13 +59,13 @@ class Rectangle:
 
     def perimeter(self):
         """Returns th perimeter of the rectangle"""
-        return ((self.__height *2) + (self.__width *2))
+        return ((self.__height * 2) + (self.__width * 2))
         if self.__height == 0 or self.__width == 0:
             return 0
 
-    def __str__(self)-> str:
+    def __str__(self) -> str:
         """Presents a diagram of the rectangle defined fron object"""
-        if self.__height == 0 or self.__width ==0:
+        if self.__height == 0 or self.__width == 0:
             return ("")
 
         rectangle = ""
