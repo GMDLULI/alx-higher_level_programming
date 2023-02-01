@@ -8,16 +8,16 @@ class Rectangle:
     """this represents a rectangle"""
 
     def __init__(self, width=0, height=0):
-    """ Function that defines a rectangle
-    Args:
-        self.__height = height
-        self.__width = width
-    Raise:
-        TypeError: if height or width is not an integer
-        ValueError: if height or width is < 0
-    Return:
-        no return
-    """
+        """ Function that defines a rectangle
+        Args:
+            self.__height = height
+            self.__width = width
+        Raise:
+            TypeError: if height or width is not an integer
+            ValueError: if height or width is < 0
+        Return:
+            no return
+        """
         self.__height = height
         self.__width = width
 
