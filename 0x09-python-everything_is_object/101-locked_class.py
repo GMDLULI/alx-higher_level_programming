@@ -7,4 +7,4 @@ class LockedClass:
      Only allows instattion of an attribute called first_name
     """
 
-     __slots__ = ["first_name"]
+    __slots__ = ["first_name"]
