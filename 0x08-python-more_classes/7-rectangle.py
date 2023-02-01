@@ -17,21 +17,10 @@ class Rectangle:
         Raise:
             TypeError: if height or width is not an integer
             ValueError: if height or width is < 0
-        Return:
-            print rectangle with character "#"
         """
         self.__width = width
         self.__height = height
 
-        if not isinstance(width, int):
-            raise TypeError('width must be an integer')
-        if (width < 0):
-            raise ValueError('width must be >= 0')
-
-        if not isinstance(height, int):
-            raise TypeError('height must be an integer')
-        if (height < 0):
-            raise ValueError('height must be >= 0')
         Rectangle.number_of_instances += 1
 
     @property
