@@ -7,13 +7,8 @@ class Rectangle(BaseGeometry):
     """Class that inherits from the BaseGeometry"""
 
     def __init__(self, width, height):
-        """Method that initializes class attributes
-        Args:
-            self.__width = width
-            self.__height = height
-        Return:
-            no return
-        """
+        """initialize new rectangle"""
+
         self.__width = width
         self.__height = height
 
