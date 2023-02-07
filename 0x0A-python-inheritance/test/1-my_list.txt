@@ -1,0 +1,108 @@
+Test for 1-my_list.py
+---------------------------------------------
+
+case 0: import
+>>> MyList = __import__('1-my_list').MyList
+>>>
+---------------------------------------------
+
+case 1: common case
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>>
+
+--------------------------------------------
+
+case 2: not defined object
+
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list2.print_sorted()
+Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+NameError: name my_list2' is not defined
+>>>
+
+--------------------------------------------
+
+case 3: passed a list
+
+>>> a = [1, 8, 2]
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[1, 2, 8]
+>>>
+
+--------------------------------------------
+
+case 4: passed list with negative numbers 
+>>> a = [-5, -3, 2, 4, 1]
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[-5, -3, 1, 2, 4]
+>>>
+
+-------------------------------------------
+
+case 5: passed in a string
+>>> a = "Angy"
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+['A', 'n', 'g', 'y']
+>>>
+
+------------------------------------------
+
+case 6: passed in an empty list
+>> a = []
+>>> my_list = MyList(a)
+>>> my_list.print_sorted()
+[]
+>>>
+
+------------------------------------------
+
+case 7: same number
+
+>>> my_list2 = MyList()
+>>> my_list2.append(8)
+>>> my_list2.append(8)
+>>> my_list2.append(8)
+>>> my_list2.append(8)
+>>> my_list2.print_sorted()
+[8, 8, 8, 8]
+>>>
+
+----------------------------------------
+
+case 8: unique number
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[1]
+>>> print(my_list)
+[1]
+>>>
+
+-----------------------------------------
+
+case 9: parent object
+
+>>> my_list = [1, 2, 3]
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'print_sorted'
+>>>
+
