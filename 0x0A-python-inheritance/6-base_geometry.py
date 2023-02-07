@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Module condist of a class that raises an exception"""
+"""Defines a base geometry class BaseGeometry"""
 
 
 class BaseGeometry:
+    """this class represents a base geometry"""
     def area(self):
         """ Function that raises an exception with message"""
 
