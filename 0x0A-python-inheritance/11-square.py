@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Import the Rectangle class, for operations"""
-
 Rectangle = __import__('9-rectangle').Rectangle
 
 

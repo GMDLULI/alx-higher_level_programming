@@ -59,10 +59,6 @@ Checking for non-integer types:
         >>> b.integer_validator("complex", complex(1, 1))
         Traceback (most recent call last):
         ...
-        TypeError: float must be an integer
-        >>> b.integer_validator("complex", complex(1, 1))
-        Traceback (most recent call last):
-        ...
         TypeError: complex must be an integer
         >>> b.integer_validator("string", "hello")
         Traceback (most recent call last):
