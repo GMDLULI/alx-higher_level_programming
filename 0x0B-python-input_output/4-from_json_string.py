@@ -4,5 +4,5 @@
 
 def from_json_string(my_str):
     """function that returns object represented by JSON"""
-    obj = jason.loads(m_str)
+    obj = jason.loads(my_str)
     return obj
