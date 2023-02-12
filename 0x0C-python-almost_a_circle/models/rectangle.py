@@ -108,7 +108,7 @@ class Rectangle(Base):
 
     def area(self):
         """Function that returns the area of Rectangle"""
-        return self.__heigh * self.__width
+        return self.__height * self.__width
 
     def display(self):
         """function that displays '#' character"""
@@ -120,7 +120,7 @@ class Rectangle(Base):
 
 #        print("{}".format(rect))
 
-        print("\n" + self.y, end="")
+        print("\n" * self.y, end="")
 
         for i in range(self.height):
             rect += (" " * self.x) + (symbol * self.width) + "\n"
@@ -128,10 +128,11 @@ class Rectangle(Base):
 
     def __str__(self):
         """function that returns string"""
-            return "[{}] ({}) {}/{} - {}/{}".format(type(self.__name__, self.id,
+        return "[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id,
                                                 self.__x, self.__y,
                                                 self.__width, self.__height)
-    def upgrade(self. *args):
+
+    def update(self, *args, **kwargs):
         """
             assigns key/value argument to attributes
             kwargs is skipped if args is not empty
@@ -139,25 +140,25 @@ class Rectangle(Base):
                 *args -  variable number of no-keyword args
                 **kwargs - variable number of keyworded args
        """
-       if len(args) == 0:
-           for key, val in kwargs.items():
-               self.__setattr__(key, val)
-           return
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
 
-       try:
-           self.id = args[0]
-           self.width = args[1]
-           self.height = args[2]
-           self.x = args[3]
-           self.y = args[4]
-       except IndexError:
-           pass
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
 
-   def to_dictionary(self):
-       """function that returns the dictionary 
-          representaion of a rectangle
-       """
-       return {'x': getattr(self, "x"), 'y':getattr(self, "y"),
+    def to_dictionary(self):
+        """function that returns the dictionary 
+           representaion of a rectangle
+        """
+        return {'x': getattr(self, "x"), 'y':getattr(self, "y"),
                 'id': getattr(self,"id"), 'height': getattr(self, "height"),
                 'width': getattr(self, "width")}
 

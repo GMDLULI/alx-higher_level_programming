@@ -4,32 +4,32 @@
 """
 
 
-from models.Rectangle import Rectangle 
+from models.rectangle import Rectangle 
 
 class Square(Rectangle):
     """Square class implementing Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
         """inistializes Square attributes"""
-        super().__init__(id, x, y, width=size, height=size)
+        super().__init__(id, x, y, size, size)
       
 
-        @property
-        def size(self):
-            """getter function for size
-               retuns: size
-            """
-            return self.width
+    @property
+    def size(self):
+        """getter function for size
+           retuns: size
+        """
+        return self.width
 
-       @size.setter
-       def size(self, value):
-           """setter function for size
-              Args:
-                  value (int): value to be set
-           """
-           if type(value) is not int:
-               raise TypeError("width must be integer")
-           if value <= 0:
-               raise ValueError("width must be > 0")
+    @size.setter
+    def size(self, value):
+        """setter function for size
+           Args:
+               value (int): value to be set
+        """
+        if type(value) is not int:
+            raise TypeError("width must be integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
 
     def update(self, *args, **kwargs):
         """function that assigns attributes to key/value arguments
@@ -58,7 +58,7 @@ class Square(Rectangle):
     def to_dictionary(self):
         """Returns dictionary representaion of a Square"""
 
-        return ({'id': getattr(self, "id"),
+        return {'id': getattr(self, "id"),
                  'size':getattr(self, "width"),
                  'y': getattr(self, "y"),
-                 'x': getattr(self, "x"})
+                 'x': getattr(self, "x")}

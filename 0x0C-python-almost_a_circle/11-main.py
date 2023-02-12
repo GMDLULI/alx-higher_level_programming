@@ -26,4 +26,4 @@ if __name__ == "__main__":
     print(s1)
 
     s1.update(size=7, id=89, y=1)
-    print(s1
+    print(s1)
