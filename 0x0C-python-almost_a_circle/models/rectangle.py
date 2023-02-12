@@ -33,7 +33,13 @@ class Rectangle(base):
         """setter function for width
          Args:
             value (int): value to be set
-         """
+        """
+        if type(width) is not int:
+            raise TypeError("width must be integer")
+
+        if width <= 0:
+            rasie ValueError("width must be > 0")
+
         self.__width = value
     
     @getter
@@ -49,6 +55,12 @@ class Rectangle(base):
          Args:
             value (int): value to be set
          """
+        if type(height) is not int:
+            raise TypeError("height must be integer")
+
+        if height <= 0:
+            raise ValueError("height must be > 0")
+
         self.__height = value
 
 
@@ -65,6 +77,11 @@ class Rectangle(base):
          Args:
             value (int): value to be set
          """
+        if type(x) is not int:
+            raise TypeError("x must be integer")
+
+        if x <= 0:
+            rasie ValueError("x must be > 0")
         self.__width = value
 
 
@@ -81,4 +98,9 @@ class Rectangle(base):
          Args:
             value (int): value to be set
          """
+        if type(y) is not int:
+            raise TypeError("y must be integer")
+
+        if y <= 0:
+            rasie ValueError("y must be > 0")
         self.__y = value
