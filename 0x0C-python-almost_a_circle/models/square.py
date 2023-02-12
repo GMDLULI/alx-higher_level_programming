@@ -11,14 +11,14 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """inistializes Square attributes"""
         super().__init__(id, x, y, width=size, height=size)
-        self.size = size
+      
 
         @property
         def size(self):
             """getter function for size
                retuns: size
             """
-            return self.__size
+            return self.width
 
        @size.setter
        def size(self, value):
@@ -27,12 +27,38 @@ class Square(Rectangle):
                   value (int): value to be set
            """
            if type(value) is not int:
-               raise TypeError("size must be integer")
+               raise TypeError("width must be integer")
            if value <= 0:
-               raise ValueError("size must be > 0")
+               raise ValueError("width must be > 0")
+
+    def update(self, *args, **kwargs):
+        """function that assigns attributes to key/value arguments
+           kwargs is skipped if args is not empty
+           Args:
+               *args - variable number of no-keyworded args
+               **kwargs - variable number of keyworded args
+        """
+        if len(args) == 0:
+           for key, val in kwargs.items():
+               self.__setattr__(key, value)
+           return
+        try:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        except IndexError:
+            pass
 
     def __str__(self):
         """method returns a string"""
         return "[{}] ({}) {}/{} - {}". format(type(self.__name__, self.id,
                                                    self.__x, self.__y, 
-                                                   self.__size))
+                                                   self.__width))
+    def to_dictionary(self):
+        """Returns dictionary representaion of a Square"""
+
+        return ({'id': getattr(self, "id"),
+                 'size':getattr(self, "width"),
+                 'y': getattr(self, "y"),
+                 'x': getattr(self, "x"})
