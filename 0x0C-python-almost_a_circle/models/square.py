@@ -4,13 +4,13 @@
 """
 
 
-from models.rectangle import Rectangle 
+from models.rectangle import *
 
 class Square(Rectangle):
     """Square class implementing Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
         """inistializes Square attributes"""
-        super().__init__(id, x, y, size, size)
+        super().__init__(size, size, x, y, id)
       
 
     @property
@@ -28,8 +28,12 @@ class Square(Rectangle):
         """
         if type(value) is not int:
             raise TypeError("width must be integer")
+
         if value <= 0:
             raise ValueError("width must be > 0")
+
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
         """function that assigns attributes to key/value arguments
@@ -39,7 +43,7 @@ class Square(Rectangle):
                **kwargs - variable number of keyworded args
         """
         if len(args) == 0:
-           for key, val in kwargs.items():
+           for key, value in kwargs.items():
                self.__setattr__(key, value)
            return
         try:
@@ -52,9 +56,10 @@ class Square(Rectangle):
 
     def __str__(self):
         """method returns a string"""
-        return "[{}] ({}) {}/{} - {}". format(type(self.__name__, self.id,
-                                                   self.__x, self.__y, 
-                                                   self.__width))
+        return "[{}] ({}) {}/{} - {}". format(type(self).__name__,
+                                                   self.id,
+                                                   self.x, self.y, 
+                                                   self.width)
     def to_dictionary(self):
         """Returns dictionary representaion of a Square"""
 
