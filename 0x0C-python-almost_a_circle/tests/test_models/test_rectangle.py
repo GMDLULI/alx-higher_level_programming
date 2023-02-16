@@ -1,4 +1,7 @@
 ##!/usr/bin/python3
+"""Defines unittestfor rectangle.py
+"""
+
 import io
 import sys
 import unittest

@@ -1,4 +1,7 @@
 ##!/usr/bin/python3
+"""Defines unitests for square.py
+"""
+
 import io
 import sys
 import unittest
