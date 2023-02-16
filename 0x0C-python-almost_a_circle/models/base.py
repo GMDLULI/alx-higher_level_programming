@@ -35,13 +35,12 @@ class Base:
             object to file
         """
         filename = "{}.json".format(cls.__name__)
-        with open(filename, "w", encoding="utf-8") as f:
-            if not list_objs:
-                list_objs = []
+        if not list_objs:
+            list_objs = []
 
-            for i in list_objs:
-                list_dicts = i.to_dictionary()
-                f.write(cls.to_json_string(list_dicts))
+        list_dicts = [i.to_dictionary() for i in list_dicts]
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(cls.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
@@ -69,13 +68,8 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """Returns list of instances"""
-        filename = f"{cls.__name__}.json"
-
-        try:
-            with open(filename, "r", encoding="utf-8") as jsonfile:
-                string = jsonfile.read()
-                save = cls.from_json_string(string)
-                return [cls.create(**d) for d in save]
-
-        except (IOError):
+        filename = "{cls.__name__}.json".format(cls.__name__)
+        if not path.isfile(file_load):
             return []
+        with open(filename, "r", encoding="utf-8") as f:
+            return[cls.create(**dic) for dic cls.from__json_string(f.read())]
