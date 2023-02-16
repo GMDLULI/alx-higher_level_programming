@@ -36,8 +36,8 @@ class Base:
         """
         filename = f"{cls.__name__}.json"
         with open(filename, "w", encoding="utf-8") as f:
-            if list_objs is None:
-                f.write("[]")
+            if not list_objs:
+                list_objs = []
 
             for i in list_objs:
                 list_dicts = i.to_dictionary()
