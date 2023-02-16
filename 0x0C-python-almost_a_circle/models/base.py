@@ -3,7 +3,6 @@
 import json
 
 
-
 class Base:
     """class Base that manages id attribute in all future classes"""
     __nb_objects = 0
@@ -20,25 +19,24 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-    @staticmethod        
+    @staticmethod
     def to_json_string(list_dictionaries):
         """function that returns the JSON string representation
-        """ 
+        """
         if list_dictionaries is None:
-            return 
+            return
         else:
             return json.dumps(list_dictionaries)
-
 
     @classmethod
     def save_to_file(cls, list_objs):
         """
-            Function that writes to json string respresentaion of 
+            Function that writes to json string respresentaion of
             object to file
         """
         filename = f"{cls.__name__}.json"
         with open(filename, "w", encoding="utf-8") as f:
-            if list_objs is None or len(list_objs) <=0 :
+            if list_objs is None or len(list_objs) <= 0:
                 f.write("[]")
 
             for i in list_objs:
@@ -50,7 +48,7 @@ class Base:
         """Returns the list of json string representaion
         """
         if json_string is None:
-           return
+            return
         else:
             jstring = json.loads(json_string)
             return jstring
@@ -59,7 +57,7 @@ class Base:
     def create(cls, **dictionary):
         """Returnsa list of instances, by creating a new instance
         """
-        dummy = cls(1,1)
+        dummy = cls(1, 1)
         dummy.update(**dictionary)
         return (dummy)
 
@@ -67,13 +65,12 @@ class Base:
     def load_from_file(cls):
         """Returns list of instances"""
         filename = f"{cls.__name__}.json"
-        
+
         try:
             with open(filename, "r", encoding="utf-8") as jsonfile:
                 string = jsonfile.read()
                 save = cls.from_json_string(string)
                 return [cls.create(**d) for d in save]
 
-        except(IOError):
+        except (IOError):
             return []
-    

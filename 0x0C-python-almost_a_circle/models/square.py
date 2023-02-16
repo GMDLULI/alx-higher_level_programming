@@ -1,4 +1,4 @@
-#!/usr/python3 
+#!/usr/python3
 """Module defines a Square class that inherits from
    Rectangle
 """
@@ -6,12 +6,12 @@
 
 from models.rectangle import *
 
+
 class Square(Rectangle):
     """Square class implementing Rectangle"""
     def __init__(self, size, x=0, y=0, id=None):
         """inistializes Square attributes"""
         super().__init__(size, size, x, y, id)
-      
 
     @property
     def size(self):
@@ -43,9 +43,9 @@ class Square(Rectangle):
                **kwargs - variable number of keyworded args
         """
         if len(args) == 0:
-           for key, value in kwargs.items():
-               self.__setattr__(key, value)
-           return
+            for key, value in kwargs.items():
+                self.__setattr__(key, value)
+            return
         try:
             self.id = args[0]
             self.size = args[1]
@@ -57,13 +57,14 @@ class Square(Rectangle):
     def __str__(self):
         """method returns a string"""
         return "[{}] ({}) {}/{} - {}". format(type(self).__name__,
-                                                   self.id,
-                                                   self.x, self.y, 
-                                                   self.width)
+                                              self.id,
+                                              self.x, self.y,
+                                              self.width)
+
     def to_dictionary(self):
         """Returns dictionary representaion of a Square"""
 
         return {'id': getattr(self, "id"),
-                 'size':getattr(self, "width"),
-                 'y': getattr(self, "y"),
-                 'x': getattr(self, "x")}
+                'size': getattr(self, "width"),
+                'y': getattr(self, "y"),
+                'x': getattr(self, "x")}

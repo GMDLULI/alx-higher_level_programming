@@ -13,9 +13,9 @@ class Rectangle(Base):
             width: width
             height: height
             x: x variable
-            y: y varible 
+            y: y varible
         """
-        super().__init__(id) 
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
@@ -41,7 +41,7 @@ class Rectangle(Base):
             raise ValueError("width must be > 0")
 
         self.__width = value
-    
+
     @property
     def height(self):
         """getter function for height
@@ -63,7 +63,6 @@ class Rectangle(Base):
 
         self.__height = value
 
-
     @property
     def x(self):
         """getter function for x
@@ -84,7 +83,6 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
 
         self.__x = value
-
 
     @property
     def y(self):
@@ -155,10 +153,9 @@ class Rectangle(Base):
             pass
 
     def to_dictionary(self):
-        """function that returns the dictionary 
+        """function that returns the dictionary
            representaion of a rectangle
         """
-        return {'x': getattr(self, "x"), 'y':getattr(self, "y"),
-                'id': getattr(self,"id"), 'height': getattr(self, "height"),
+        return {'x': getattr(self, "x"), 'y': getattr(self, "y"),
+                'id': getattr(self, "id"), 'height': getattr(self, "height"),
                 'width': getattr(self, "width")}
-
