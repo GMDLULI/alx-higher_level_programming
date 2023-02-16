@@ -57,7 +57,12 @@ class Base:
     def create(cls, **dictionary):
         """Returnsa list of instances, by creating a new instance
         """
-        dummy = cls(1, 1)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            dummy = None
         dummy.update(**dictionary)
         return (dummy)
 
