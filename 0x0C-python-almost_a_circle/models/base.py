@@ -48,7 +48,7 @@ class Base:
         """Returns the list of json string representaion
         """
         if json_string is None:
-            return
+            return "[]"
         else:
             jstring = json.loads(json_string)
             return jstring
