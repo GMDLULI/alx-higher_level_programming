@@ -34,14 +34,14 @@ class Base:
             Function that writes to json string respresentaion of
             object to file
         """
-        filename = f"{cls.__name__}.json"
+        filename = "{}.json".format(cls.__name__)
         with open(filename, "w", encoding="utf-8") as f:
             if not list_objs:
                 list_objs = []
 
             for i in list_objs:
                 list_dicts = i.to_dictionary()
-                f.write(Base.to_json_string(list_dicts))
+                f.write(cls.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
