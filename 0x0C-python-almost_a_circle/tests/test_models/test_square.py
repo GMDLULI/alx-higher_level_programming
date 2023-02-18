@@ -5,9 +5,8 @@
 import io
 import sys
 import unittest
-from models.rectangle import Rectangle
 from models.base import Base
-from models.square import square
+from models.square import Square
 
 
 class TestSquare_instantiation(unittest.TestCase):
@@ -52,7 +51,7 @@ class TestSquare_instantiation(unittest.TestCase):
 
     def Test_five_args(self):
         """tests for 5 arguments"""
-        with self.asserRaise(TypeError) as err:
+        with self.asserRaises(TypeError) as err:
             s1 = square(1, 2, 3, 4, 5, 6)
             err_msg = "__init__() takes from 3 to 5 positional \
                       arguments but 6 were given"
@@ -67,7 +66,7 @@ class TestSquare_instantiation(unittest.TestCase):
 
     def Test_size_private(self):
         """test if private width attibute is passed"""
-        with self.asserRaise(AttributeError) as err:
+        with self.asserRaises(AttributeError) as err:
             print(Square(1, 2, 3).__width)
             err_msg = "'Square' object has no attribute '__width'"
             self.assertEqual(str(err.exception), err_msg)
@@ -79,15 +78,15 @@ class TestSquare_instantiation(unittest.TestCase):
 
     def test_width_getter(self):
         """test the getter of width"""
-        s = Sqaure(4, 1, 9, 2)
+        s = Square(4, 1, 9, 2)
         s.size = 8
-        sefl.assertEqaul(8, s.width)
+        self.assertEqaul(8, s.width)
 
     def test_height_getter(self):
         """test the getter of height"""
-        s = Sqaure(4, 1, 9, 2)
+        s = Square(4, 1, 9, 2)
         s.size = 8
-        self.assertEqaul(8, s.height)
+        self.assertEqual(8, s.height)
 
     def test_x_getter(self):
         """test the setter of x"""
@@ -283,7 +282,7 @@ class TestSquare_area(unittest.TestCase):
     """unittest for testing the area method"""
     def test_area_only_dimensions(self):
         """test area with only width and height"""
-        s1 = Sqaure(2)
+        s1 = Square(2)
         s1.area()
         self.assertEqual(s1.area(), 4)
 
@@ -354,45 +353,42 @@ class TestSquare_stdout(unittest.TestCase):
         """test display method when an argument is
             passed to it """
 
-        s = Square(5, 1, 2, 4, 7)
+        s = Square(5, 1, 2, 4)
         with self.assertRaises(TypeError) as err:
             s.display(1)
             err_msg = "display() takes 1 positional argument but 2 were given"
             self.assertEqual(err.exception, err_msg)
 
+    def test__str__method_print_size(self):
+        s = Square(4)
+        capture = TestSquare_stdout.capture_stdout(s, "print")
+        correct = "[Square] ({}) 0/0 - 4\n".format(s.id)
+        self.assertEqual(correct, capture.getvalue())
 
-class Testsqaure__str__(unittest.TestCase):
-    """unittest tests for __str__() method"""
-
-    def test__str__width_height(Self):
-        """test str() method with size"""
-        s = Square(2)
-        result = "'[Square] ({}) 0/0 - 2'".format(s.id)
-        self.assertEqual(s.__str__(), result)
 
     def test__str__size_x(self):
         """test str() mehod with size and x"""
         s = Square(2, 3)
-        result = "'[Sqaure] ({}) 3/0 - 2'" .format(s.id)
-        self.assertEqual(s.__str__(), result)
+        result = "[Square] ({}) 3/0 - 2" .format(s.id)
+        self.assertEqual(str(s), result)
 
     def test__str__size_x_y(self):
         """test __str__() method with size and x and y"""
         s = Square(2, 3, 5)
-        result = "'[Square] ({}) 3/5 - 2'".format(r.id)
-        self.assertEqual(r.__str__(), result)
+        result = "[Square] ({}) 3/5 - 2".format(s.id)
+        self.assertEqual(str(s), result)
 
     def test__str__all__atributes(self):
         """test __str__() method with all attributes"""
-        s = Sqaure(2, 3, 5, 7)
-        result = "'[Sqaure] (7) 3/5 - 2'"
-        self.assertEqual(s.__str__(), result)
+        s = Square(2, 3, 5, 7)
+        result = "[Square] (7) 3/5 - 2"
+        self.assertEqual(str(s), result)
 
     def test__str__x_and_y_zero(self):
         """test __str__() method for when x and y are zero"""
         s = Square(1, 0, 0, 1)
-        result = "'[Square] (1) 0/0 - 1'"
-        self.assertEqual(s.__str_(), result)
+        result = "[Square] (1) 0/0 - 1"
+        self.assertEqual(str(s), result)
 
 
 class TestSquare_update(unittest.TestCase):
@@ -402,94 +398,94 @@ class TestSquare_update(unittest.TestCase):
         """test update function with no arguments"""
         s = Square(10, 20, 30, 40)
         s.update()
-        result = "'[Sqaure] (40) 20/30 - 10'"
+        result = "[Square] (40) 20/30 - 10"
         self.assertEqual(str(s), result)
 
     def test_update_one_arg(self):
         """test update method with 1 argument"""
-        s = Sqaure(10, 20, 30, 40)
+        s = Square(10, 20, 30, 40)
         s.update(1)
-        result = "'[Sqaure] (1) 20/30 - 10'"
+        result = "[Square] (1) 20/30 - 10"
         self.assertEqual(str(s), result)
 
     def test_update_two_args(self):
         """test update method with 2 arguments"""
         s = Square(10, 20, 30, 40)
         s.update(89, 2)
-        result = "'[Square] (89) 20/30 - 2'"
+        result = "[Square] (89) 20/30 - 2"
         self.assertEqual(str(s), result)
 
     def test_update_three_args(self):
         """test update method with 3 arguments"""
         s = Square(10, 20, 30, 40)
         s.update(89, 2)
-        result = "'[Square] (89) 3/30 - 2'"
+        result = "[Square] (89) 20/30 - 2"
         self.assertEqual(str(s), result)
 
     def test_update_four_args(self):
         """test update method with 4 arguments"""
         s = Square(10, 20, 30, 40)
-        r.update(89, 2, 3, 4)
-        result = "'[Square] (89) 3/4 - 2'"
+        s.update(89, 2, 3, 4)
+        result = "[Square] (89) 3/4 - 2"
         self.assertEqual(str(s), result)
 
     def test_update_five_args(self):
         """test update method with 5 arguments"""
         s = Square(10, 20, 30, 40)
         s.update(89, 2, 3, 4, 5)
-        result = "'[Square] (89) 3/4 - 2/'"
+        result = "[Square] (89) 3/4 - 2"
         self.assertEqual(str(s), result)
 
     def test_update_more_then_five_args(self):
         """test update method with more the five arguments """
         s = Square(10, 20, 30, 40)
         s.update(89, 2, 3, 5, 6, 7)
-        result = "'[square] (89) 3/4 - 2/'"
+        result = "[Square] (89) s/5 - 2"
         self.assertEqual(str(s), result)
 
     def test_update_zero(self):
         """test when arguments are zero"""
         s = Square(10, 20, 30, 40)
-        with assertRaise(ValueError, "width must be > 0"):
+        with assertRaisesRegex(ValueError, "width must be > 0"):
             s.update(89, 0)
 
-        with assertEqual(str(s), "'[Square] (89) 0/30 - 2'"):
+        with assertEqual(str(s), "[Square] (89) 0/30 - 2"):
             s.update(89, 2, 0)
 
-        with assertEqual(str(s), "'[Square] (89) 3/0 - 2'"):
+        with assertEqual(str(s), "[Square] (89) 3/0 - 2"):
             s.update(89, 2, 3, 0)
 
-        with assertEqual(str(s), "'[Square] (89) 3/4 - 2'"):
+        with assertEqual(str(s), "[Square] (89) 3/4 - 2"):
             s.update(89, 2, 3, 4, 0)
 
     def test_update_arguments(self):
         """test type of arguments passed in to update method"""
         s = Square(10, 20, 30, 40)
-        with self.assertEqual(str(r), "'[Square] (None) 20/30 - 10'"):
+        with self.assertEqual(str(s), "[Square] (None) 20/30 - 10"):
             s.update(None)
 
-        with self.assertEqual(str(r), "'[Square] (0) 20/30 - 10'"):
+        with self.assertEqual(str(r), "[Square] (0) 20/30 - 10"):
             s.update(0)
 
-        with self.assertEqual(str(r), "'[Square] (-1) 20/30 - 10'"):
+        with self.assertEqual(str(r), "[Square] (-1) 20/30 - 10"):
             s.update(-1)
 
-        with self.assertRaiseRegex(ValueError, "width must be > 0"):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s.update(89, -1)
 
-        with sefl.assertRaiseRegex(TypeError, "width muat be integer"):
+        with sefl.assertRaisesRegex(TypeError, "width muat be integer"):
             s.update(89, "width")
 
-        with self.assertRaiseRegex(TypeError, "x must be integer"):
+        with self.assertRaisesRegex(TypeError, "x must be integer"):
             s.update(89, 2, "x")
 
-        with self.assertRaiseRegex(ValueError, "x must be > 0"):
+        with self.assertRaisesRegex(ValueError, "x must be > 0"):
             s.update(89, 2, -3)
 
-        with self.assertRaiseRegex(TypeError, "width must be integer"):
+        with self.assertRaisesRegex(TypeError, "width must be integer"):
             s.update(89, None)
 
-        with self.assertRaiseRegex(TypeError, "x must be integer"):
+        with self.assertRaisesRegex(TypeError, "x must be integer"):
             s.update(89, 2, None)
 
 
@@ -515,7 +511,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
             s.update(id=88, y=5, x=1, size=2)
 
     def test_update_kwargs_invalid_size_type(self):
-        s = square(10, 10, 10, 10)
+        s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             s.update(size="invalid")
 
@@ -561,13 +557,13 @@ class TestRectangle_to_dictionary(unittest.TestCase):
 
     def test_to_dictionary_size_x(self):
         s1 = Square(10, 4)
-        display = {'id': "{}".format(r1.id), 'size': 10, 'x': 4, 'y': 0}
+        display = {'id': "{}".format(s1.id), 'size': 10, 'x': 4, 'y': 0}
         self.assertEqual(s1.to_dictionary(), display)
 
     def test_to_dictionary_size_x_y(self):
         s1 = Square(10, 4, 2)
         display = {'id': "{}".format(s1.id), 'size': 10, 'y': 2, 'x': 4}
-        self.asserEqual(s1.to_dictionary(), display)
+        self.assertEqual(s1.to_dictionary(), display)
 
     def test_to_dictionary_size_x_y_id(self):
         s1 = Square(10, 4, 2, 3)
@@ -579,7 +575,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         s = Square(2, 3, 4, 5)
         err_msg = "to_dictionary() takes 1 positional argument \
                    but 2 were given"
-        with self.assertRaiseRegex(TypeError, err_msg):
+        with self.assertRaises(TypeError, err_msg):
             s.to_dictionary(1)
 
     if __name__ == "__main__":

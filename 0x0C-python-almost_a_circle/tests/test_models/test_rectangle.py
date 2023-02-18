@@ -358,8 +358,8 @@ class TestRectangle_y(unittest.TestCase):
 
     def Test_y_tuple(self):
         """test if y is assigned to a tuple"""
-        with self.assertRaisesRegex(TypeError, "y must be > 0")
-        r1 = Rectangle(1, 3, 6, (8, 9, 7))
+        with self.assertRaisesRegex(TypeError, "y must be > 0"):
+            r1 = Rectangle(1, 3, 6, (8, 9, 7))
 
 
 class TestRectangle_area(unittest.TestCase):
@@ -379,8 +379,8 @@ class TestRectangle_area(unittest.TestCase):
     def test_area_changed_atributes(self):
         """test ares() with changing attributes"""
         r1 = Rectangle(1, 2, 3, 4, 5)
-        r.width = 7
-        r.height = 8
+        r1.width = 7
+        r1.height = 8
         self.assertEqual(r.area(), 56)
 
     def test_area_small(self):
@@ -458,7 +458,7 @@ class TestRectangle_stdout(unittest.TestCase):
 
         r = Rectangle(5, 1, 2, 4, 7)
         with self.assertRaises(TypeError) as err:
-            r.displa(1)
+            r.display(1)
             err_msg = "display() takes 1 positional argument but 2 were given"
             self.assertEqual(err.exception, err_msg)
 
@@ -470,31 +470,31 @@ class TestRectangle__str__(unittest.TestCase):
 
         r = Rectangle(2, 3)
         result = "[Rectangle] ({}) 0/0 - 2/3".format(r.id)
-        self.assertEqual(r.__str__(), result)
+        self.assertEqual(str(r), result)
 
     def test__str__wdith_height_x_y(self):
         """test str() mehod with width, height, x and y"""
         r = Rectangle(2, 3, 4, 5)
         result = "[Rectangle] ({}) 4/5 - 2/3" .format(r.id)
-        self.assertEqual(r.__str__(), result)
+        self.assertEqual(strr(r), result)
 
     def test__str__width__height_x(self):
         """test __str__() method with width, height and x only"""
         r = Rectangle(2, 3, 5)
         result = "[Rectangle] ({}) 5/0 - 2/3".format(r.id)
-        self.assertEqual(r.__str__(), result)
+        self.assertEqual(str(r), result)
 
     def test__str__all__atributes(self):
         """test __str__() method with all attributes"""
         r = Rectangle(2, 3, 5, 7, 8)
         result = "[Rectangle] (8) 5/7 - 2/3"
-        self.assertEqual(r.__str__(), result)
+        self.assertEqual(str(r), result)
 
     def test__str__x_and_y_zero(self):
         """test __str__() method for when x and y are zero"""
         r = Rectangle(1, 2, 0, 0, 1)
         result = "[Rectangle] (1) 0/0 - 1/2"
-        self.assertEqual(r.__str_(), result)
+        self.assertEqual(str(r), result)
 
 
 class TestRectangle_update(unittest.TestCase):
@@ -660,7 +660,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         r1 = Rectangle(2, 3)
         display = {'x': 0, 'y': 0, 'id': "{}".format(r1.id),
                    'height': 3, 'width': 2}
-        sefl.assertEqual(r1.to_dictionary(), display)
+        self.assertEqual(r1.to_dictionary(), display)
 
     def test_to_dictionary_width_height_x_y(self):
         r1 = Rectangle(2, 3, 4, 5)
@@ -671,7 +671,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
     def test_to_dictionary_width_height_x_y(self):
         r1 = Rectangle(2, 3, 4, 5, 6)
         display = {'x': 4, 'y': 5, 'id': 6, 'height': 3, 'width': 2}
-        self.asserEqual(r1.to_dictionary(), display)
+        self.assertEqual(r1.to_dictionary(), display)
 
     def test_to_dictionary_args(self):
         """test to_dictionay() method with arguments"""

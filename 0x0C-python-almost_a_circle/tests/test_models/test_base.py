@@ -22,11 +22,11 @@ class TestBase_instantiation(unittest.TestCase):
         b1 = Base()
         b2 = Base()
         b3 = Base()
-        self.assertEqaul(b1.id, b3.id - 2)
+        self.assertEqual(b1.id, b3.id - 2)
 
     def test_one_args(self):
         """test 1 argement passed"""
-        b1 = base(1)
+        b1 = Base(1)
         self.assertEqaul(b1.id, 1)
 
     def test_None_id(self):
@@ -40,7 +40,7 @@ class TestBase_instantiation(unittest.TestCase):
         b1 = Base()
         b2 = Base(12)
         b3 = Base()
-        self.assertEqaul(b1.id, b3.id - 1)
+        self.assertEqual(b1.id, b3.id - 1)
 
     def test_id_public(self):
         """test id after being declared publicly"""
@@ -50,7 +50,7 @@ class TestBase_instantiation(unittest.TestCase):
 
     def test_nb_instances_private(self):
         """test if class private attribute  _nd_instance can be passed"""
-        with self.assertRasies(AttributeError):
+        with self.assertRaise(AttributeError):
             print(Base(12).__nb_instance)
 
     def test_str_id(self):
@@ -75,7 +75,7 @@ class TestBase_instantiation(unittest.TestCase):
 
     def test_tuple_id(self):
         """test id as tuple"""
-        self.assertEqual(base((1, 2, 3)).id, (1, 2, 3))
+        self.assertEqual(Base((1, 2, 3)).id, (1, 2, 3))
 
     def test_dict_id(self):
         """test id as dictionary"""
@@ -324,5 +324,5 @@ class TestBase_load_from_file(unittest.TestCase):
             Base.load_from_file([],)
 
 
-if __name__ == `"__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()
